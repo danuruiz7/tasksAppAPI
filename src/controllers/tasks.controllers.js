@@ -2,7 +2,6 @@ import { pool } from '../db.js';
 import jwt from 'jsonwebtoken';
 
 export const getTasks = async (req, res) => {
-  console.log('inicio');
   const token = req.headers.authorization.split(' ')[1];
 
   const tokenDecodificado = jwt.verify(token, process.env.TOKEN_KEY);
@@ -17,6 +16,7 @@ export const getTasks = async (req, res) => {
     ]);
     res.json(result);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };

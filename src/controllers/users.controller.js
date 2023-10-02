@@ -6,7 +6,9 @@ import { TOKEN_KEY } from '../config.js';
 export const createUser = async (req, res) => {
   try {
     const { username, password1, password2 } = req.body;
-
+    if (!username || !password1 || !password2) {
+      return res.status(400).json({ msg: 'Faltan datos' });
+    }
     if (password1 !== password2) {
       return res.status(400).json({ msg: 'Contraseñas no coinciden' });
     } else if (password1.length < 3) {
@@ -78,7 +80,7 @@ export const loginUser = async (req, res) => {
     //Se el usuario esta autenticado se genera el token
     let token = jwt.sign(
       {
-        exp: Math.floor(Date.now() / 1000) + 60, //El tiempo que expira el TOKEN
+        exp: Math.floor(Date.now() / 1000) + 180, //El tiempo que expira el TOKEN
         id: user_DB.id,
         username: user_DB.username,
       },
