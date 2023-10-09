@@ -1,6 +1,10 @@
+// Importa la función config del módulo dotenv para cargar las variables de entorno desde el archivo .env
 import { config } from 'dotenv';
 
+// Carga las variables de entorno desde el archivo .env al entorno de Node.js
 config();
+
+// Configura las variables de entorno con valores predeterminados si no están definidas en el archivo .env
 
 export const PORT = process.env.PORT || 3000;
 export const DB_HOST = process.env.DB_HOST || 'localhost';

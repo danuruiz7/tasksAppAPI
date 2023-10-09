@@ -1,0 +1,36 @@
+Para ejecutar la API, sigue estos pasos:
+
+Instalación de Dependencias:
+
+Ejecuta "npm install" para instalar las dependencias necesarias.
+
+Iniciar el Servidor:
+
+Usa "npm run dev" para iniciar el servidor y ejecutar la API.
+
+
+*********************Informacion******************************************
+
+
+La aplicación "api-node" es una API de tareas con funcionalidades de inicio de sesión y registro de usuarios, conectada a una base de datos MySQL. A continuación, una breve descripción de la aplicación y el propósito de cada una de sus dependencias:
+
+Descripción de la Aplicación:
+
+La aplicación "api-node" es una API desarrollada en Node.js que proporciona endpoints para gestionar tareas de usuario.
+Los usuarios pueden registrarse, iniciar sesión y luego realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en sus tareas.
+
+Dependencias Usadas:
+
+bcrypt (^5.1.1):  Cifra las contraseñas antes de almacenarlas, garantizando la seguridad en el almacenamiento de contraseñas de usuario.
+
+cors (^2.8.5): Permite solicitudes desde dominios diferentes al de la API, facilitando el acceso seguro desde aplicaciones cliente alojadas en otros sitios web.
+
+dotenv (^16.3.1): Carga variables de entorno desde un archivo .env, protegiendo información sensible como claves secretas y configuraciones.
+
+express (^4.18.2): Crea y maneja rutas, gestiona solicitudes HTTP y envía respuestas, esencial para construir APIs web eficientes en Node.js.
+
+express-jwt (^8.4.1): Valida tokens de autenticación JWT en solicitudes, asegurando que las rutas privadas solo sean accesibles por usuarios autenticados.
+
+jsonwebtoken (^9.0.2): Genera y verifica tokens JWT, fundamentales para autenticar usuarios y autorizar solicitudes en rutas protegidas.
+
+mysql2 (^3.6.1): Controlador de MySQL para Node.js, permite establecer conexiones y realizar consultas a la base de datos MySQL para la interacción con datos de usuarios y tareas.

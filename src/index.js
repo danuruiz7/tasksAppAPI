@@ -10,22 +10,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//Middleware para validar token y verificar si puede entrar en la rutas privadas
+//Middleware para validar el token JWT y restringir el acceso a las rutas privadas
 app.use(
   expressjwt({
-    secret: 'secretkey',
-    algorithms: ['HS256'],
-  }).unless({ path: ['/api/register', '/api/login'] })
+    secret: 'secretkey', //Clave secreta para firmar y verificar el token JWT
+    algorithms: ['HS256'], //Algoritmo de encriptación utilizado para el token JWT
+  }).unless({ path: ['/api/register', '/api/login'] }) //Excluye las rutas de registro y inicio de sesión de la autenticación JWT
 );
 
 //Rutas
-app.use('/', index);
-app.use('/api/tasks', tasksRoutes);
-app.use('/api', usersRoutes);
+app.use('/', index); //Asocia las rutas del índice a la raíz del servidor
+app.use('/api/tasks', tasksRoutes); //Asocia las rutas de tareas a '/api/tasks'
+app.use('/api', usersRoutes); //Asocia las rutas de usuarios a '/api'
 
-// middleware para manejar errores
+//Middleware para manejar errores
 app.use((err, req, res, next) => {
-  console.log(err);
+  // console.log(err);
   if (err.inner.name === 'TokenExpiredError') {
     return res.status(err.status).json({ msg: 'Expiro la sesion' });
   }
@@ -35,6 +35,7 @@ app.use((err, req, res, next) => {
   res.status(404).json({ message: 'Endpoint no encontrado' });
 });
 
+// Inicia el servidor en el puerto especificado
 app.listen(PORT, () => {
   console.log(`app en el port ${PORT}`);
 });
