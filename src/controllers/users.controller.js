@@ -55,7 +55,6 @@ export const createUser = async (req, res) => {
         newUser.username,
         hash,
       ]);
-      res.json({ msg: 'Usuario creado' });
     });
 
     //Respuesta de éxito con un mensaje de bienvenida
